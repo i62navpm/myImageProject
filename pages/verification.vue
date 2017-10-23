@@ -1,5 +1,7 @@
 <template lang="pug">
-  verification
+  v-layout(row justify-center align-center)
+    v-flex(xs12 sm8 md6)
+      verification
 </template>
 
 <script>

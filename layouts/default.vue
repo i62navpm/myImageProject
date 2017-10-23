@@ -2,7 +2,7 @@
   v-app
     main
       v-content
-        v-containter
+        v-container(fill-height)
           nuxt
 </template>
 

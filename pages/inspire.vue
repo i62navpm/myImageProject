@@ -11,3 +11,9 @@
     </blockquote>
   </v-layout>
 </template>
+
+<script>
+export default {
+  layout: 'home'
+}
+</script>
