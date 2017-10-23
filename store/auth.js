@@ -17,8 +17,10 @@ export const actions = {
 
   async GET_USER_SESSION ({ commit }) {
     try {
-      let email = await this.cognito.getUserSession()
+      let {email, token} = await this.cognito.getUserSession()
       commit('SET_USER', email)
+
+      return token
     } catch (error) {
       throw new Error(error)
     }
