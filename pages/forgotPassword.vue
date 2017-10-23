@@ -1,5 +1,7 @@
 <template lang="pug">
-  forgot-password
+  v-layout(row justify-center align-center)
+    v-flex(xs12 sm8 md6)
+      forgot-password
 </template>
 
 <script>

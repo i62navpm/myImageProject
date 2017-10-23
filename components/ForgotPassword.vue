@@ -1,24 +1,22 @@
 <template lang="pug">
-v-layout(row justify-center align-center fill-height)
-  v-flex(xs12 sm8 md6)
-    v-card
-      v-card-title.headline Forgot the password
-      v-card-text
-        form(v-if="showPasswordForm" @keydown.enter.prevent="sendActivatePassword")
-          v-text-field(label="Code", v-model="code", required)
-          v-text-field(type="password" label="Password", hint="The length must be more than 8 characters", v-model="password" required)
-          v-layout(row justify-space-between)
-            small *indicates required field
-            v-btn(color="primary" :loading="loading"  @click.prevent="sendActivatePassword" :disabled="loading") Set password
-          v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
-        form(v-else @keydown.enter.prevent="sendForgotPassword")
-          v-text-field(type="email" label="Email", v-model="email", required)
-          v-layout(row justify-space-between)
-            small *indicates required field
-            v-btn(color="primary" :loading="loading"  @click.prevent="sendForgotPassword" :disabled="loading") Forgot password
-          v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
-          v-layout(row justify-space-between)
-            v-btn(color="primary" small flat :to="'/'") Have you an account?
+  v-card
+    v-card-title.headline Forgot the password
+    v-card-text
+      form(v-if="showPasswordForm" @keydown.enter.prevent="sendActivatePassword")
+        v-text-field(label="Code", v-model="code", required)
+        v-text-field(type="password" label="Password", hint="The length must be more than 8 characters", v-model="password" required)
+        v-layout(row justify-space-between)
+          small *indicates required field
+          v-btn(color="primary" :loading="loading"  @click.prevent="sendActivatePassword" :disabled="loading") Set password
+        v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
+      form(v-else @keydown.enter.prevent="sendForgotPassword")
+        v-text-field(type="email" label="Email", v-model="email", required)
+        v-layout(row justify-space-between)
+          small *indicates required field
+          v-btn(color="primary" :loading="loading"  @click.prevent="sendForgotPassword" :disabled="loading") Forgot password
+        v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
+        v-layout(row justify-space-between)
+          v-btn(color="primary" small flat :to="'/'") Have you an account?
 </template>
 
 <script>
