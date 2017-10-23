@@ -27,12 +27,11 @@ export default class CognitoSDK {
             reject(err)
             return
           }
-
           this.setCredentials(session.getIdToken().jwtToken)
           resolve(session)
         }
       )
-    }).then(() => this.getUserData())
+    }).then((session) => (this.getUserData().then(email => ({email, token: session.getIdToken().jwtToken}))))
   }
 
   login(Email, Password) {
