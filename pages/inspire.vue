@@ -13,7 +13,12 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  layout: 'home'
+  layout: 'home',
+  beforeCreate () {
+    return axios.get(`https://tv1voqex82.execute-api.eu-central-1.amazonaws.com/v1/images`)
+  }
 }
 </script>
