@@ -1,7 +1,7 @@
 {
   "name": "my-image-project",
   "version": "1.0.0",
-  "description": "Nuxt.js + Vuetify.js project",
+  "description": "Nuxt.js + Vuetify.js + AWS services",
   "author": "Manuel Navarro Perez <>",
   "private": true,
   "scripts": {
