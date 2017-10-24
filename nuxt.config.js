@@ -41,7 +41,8 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      'axios'
+      'axios',
+      'moment'
     ],
     extractCSS: true,
     /*
