@@ -7,7 +7,7 @@
             v-icon(v-html='item.icon')
           v-list-tile-content
             v-list-tile-title(v-text='item.title')
-    v-toolbar(fixed='', app='', :clipped-left='clipped')
+    v-toolbar(dark color="primary" fixed='', app='', :clipped-left='clipped' extended)
       v-toolbar-side-icon(@click='drawer = !drawer')
       v-btn(icon='', @click.stop='miniVariant = !miniVariant')
         v-icon(v-html="miniVariant ? 'chevron_right' : 'chevron_left'")
@@ -15,39 +15,36 @@
         v-icon web
       v-toolbar-title(v-text='title')
       v-spacer
-      v-btn(icon='', @click.stop='rightDrawer = !rightDrawer')
-        v-icon menu
+      v-tooltip(left)
+        v-btn(icon='' slot="activator")
+          v-icon exit_to_app
+        span Logout
+      v-fab-transition
+        upload-dialog
     main
       v-content
         v-container
           nuxt
-    v-navigation-drawer(temporary='', :right='right', v-model='rightDrawer', app='')
-      v-list
-        v-list-tile(@click.native='right = !right')
-          v-list-tile-action
-            v-icon(light='') compare_arrows
-          v-list-tile-title Switch drawer (click me)
-    v-footer(:fixed='fixed', app='')
-      span © 2017
 
 </template>
-
 <script>
-  export default {
-    data () {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'My image project'
-      }
+import UploadDialog from '~/components/UploadDialog.vue'
+
+export default {
+  components: {
+    UploadDialog
+  },
+  data () {
+    return {
+      clipped: false,
+      drawer: false,
+      items: [
+        { icon: 'apps', title: 'Welcome', to: '/' },
+        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+      ],
+      miniVariant: false,
+      title: 'My image project'
     }
   }
+}
 </script>
