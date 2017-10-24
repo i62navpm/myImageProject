@@ -19,7 +19,6 @@ export const actions = {
   },
 
   async GET_IMAGES({ commit }, { email }) {
-    console.log(email)
     const images = await this.awsService.get(`images/${email}`)
     commit('SET_IMAGES', images.data)
     return images.data
