@@ -1,9 +1,8 @@
-import axios from 'axios'
-
 export default async ({ store }) => {
   store.dispatch('auth/INIT_COGNITO')
   try {
-    axios.defaults.headers.common['Authorization'] = await store.dispatch('auth/GET_USER_SESSION')
+    const token = await store.dispatch('auth/GET_USER_SESSION')
+    store.dispatch('images/INIT_API', { token })
   } catch (error) {
     console.error(error)
   }
