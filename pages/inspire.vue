@@ -1,24 +1,38 @@
-<template>
-  <v-layout column align-center>
-    <img src="/v.png" alt="Vuetify.js" class="mb-5">
-    <blockquote>
-      &#8220;First, solve the problem. Then, write the code.&#8221;
-      <footer>
-        <small>
-          <em>&mdash;John Johnson</em>
-        </small>
-      </footer>
-    </blockquote>
-  </v-layout>
+<template lang="pug">
+v-container(fluid grid-list-md)
+  v-layout(row wrap)
+    v-flex.xs6(v-for="image in images" :key="image")
+      v-card
+        v-card-media(:src="image" :contain="true" height="200px")
+          //- v-container(fill-height fluid)
+          //-   v-layout(fill-height)
+          //-     v-flex(xs12 align-end flexbox)
+          //-       span.headline(v-text="'Hola'")
+        v-card-title(primary-title='')
+          div
+            .headline Top western road trips
+            span.grey--text 1,000 miles of wonder
+
+        v-card-actions
+          v-spacer
+          v-btn(icon='')
+            v-icon favorite
+          v-btn(icon='')
+            v-icon bookmark
+          v-btn(icon='')
+            v-icon share
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   layout: 'home',
-  beforeCreate () {
-    return axios.get(`https://tv1voqex82.execute-api.eu-central-1.amazonaws.com/v1/images`)
+  data () {
+    return {
+      images: []
+    }
+  },
+  async beforeCreate() {
+    this.images = await this.$store.dispatch('images/GET_IMAGES', {email: this.$store.state.auth.authEmail})
   }
 }
 </script>
