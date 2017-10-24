@@ -12,7 +12,9 @@ import {
   VToolbar,
   VTextField,
   VProgressCircular,
-  VAlert
+  VAlert,
+  VTooltip,
+  VDialog
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -28,6 +30,8 @@ Vue.use(Vuetify, {
     VToolbar,
     VTextField,
     VProgressCircular,
-    VAlert
+    VAlert,
+    VTooltip,
+    VDialog
   }
 })
