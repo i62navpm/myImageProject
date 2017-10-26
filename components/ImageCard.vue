@@ -1,6 +1,6 @@
 <template lang="pug">
   v-card
-    v-card-media(:src="image.url" :contain="true" height="200px")
+    v-card-media(:src="image.url" :contain="false" height="200px")
     v-card-title(primary-title)
       div
         .headline {{image.name}}
