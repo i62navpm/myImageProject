@@ -5,6 +5,12 @@ export const state = () => ({
   userImages: null
 })
 
+export const getters = {
+  VIEW_IMAGES: function (state) {
+    return state.userImages || []
+  }
+}
+
 export const mutations = {
   SET_IMAGES: function (state, images) {
     state.userImages = images
