@@ -10,7 +10,7 @@ v-layout(row justify-center)
         v-container(grid-list-md)
           v-layout(wrap)
             v-flex(xs12)
-              input(type="file" v-on:change="uploadFile")
+              input(type="file" v-on:change="uploadFile" accept="image/*")
       v-card-actions
         v-spacer
         v-btn(color='blue darken-1', flat @click.native='closeDialog()') Close
