@@ -34,7 +34,7 @@ export const actions = {
     return {url: this.awsService.defaults.baseURL + email, token: this.awsService.defaults.headers.Authorization}
   },
 
-  UPLOAD_IMAGE({ dispatch }, { email, name, file }) {
+  UPLOAD_IMAGE({ dispatch }, { email, name, file, config }) {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     return new Promise((resolve, reject) => {
@@ -45,7 +45,7 @@ export const actions = {
           Body: reader.result
         }
         try {
-          resolve(await this.awsService.post(email, params))
+          resolve(await this.awsService.post(email, params, config))
         } catch (err) {
           reject(new Error(err))
         }

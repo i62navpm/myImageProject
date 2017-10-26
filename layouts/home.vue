@@ -1,6 +1,6 @@
 <template lang="pug">
   v-app
-    v-toolbar(dark color="primary" fixed='', app='', :clipped-left='clipped' extended)
+    v-toolbar(dark color="primary" app extended)
       v-toolbar-title(v-text='title')
       v-spacer
       v-tooltip(left)
