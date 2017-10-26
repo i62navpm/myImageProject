@@ -64,7 +64,7 @@ module.exports = {
           })
         ]
       }
-
+      config.resolve.alias['vue'] = 'vue/dist/vue.common'
       config.module.rules.forEach(rule => {
         if (rule.test.toString() === '/\\.styl(us)?$/') {
           rule.use.push({
