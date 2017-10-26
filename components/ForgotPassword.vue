@@ -15,7 +15,7 @@
           small *indicates required field
           v-btn(color="primary" :loading="loading"  @click.prevent="sendForgotPassword" :disabled="loading") Forgot password
         v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
-        v-layout(row justify-space-between)
+        v-layout(v-bind="binding" justify-space-between)
           v-btn(color="primary" small flat :to="'/'") Have you an account?
 </template>
 
@@ -61,6 +61,13 @@ export default {
         this.alert = true
       }
       this.loading = false
+    }
+  },
+  computed: {
+    binding () {
+      const binding = {}
+      if (!this.$vuetify.breakpoint.smAndUp) binding.column = true
+      return binding
     }
   }
 }

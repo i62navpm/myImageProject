@@ -9,9 +9,9 @@
           small *indicates required field
           v-btn(color="primary" name="submit-button" :loading="loading" @click.prevent="sendLogin" :disabled="loading") Sign in
         v-alert(error dismissible transition="scale-transition" v-model="alert") {{error}}
-      v-layout(row justify-space-between)
-        v-btn(color="primary" small flat :to="'forgotPassword'") Forgot the password?
-        v-btn(color="primary" small flat :to="'register'") You don't have an account yet?
+        v-layout(v-bind="binding" justify-space-between)
+          v-btn(color="primary" small flat :to="'forgotPassword'") Forgot the password?
+          v-btn(color="primary" small flat :to="'register'") You don't have an account yet?
 </template>
 
 <script>
@@ -37,6 +37,13 @@ export default {
         this.alert = true
       }
       this.loading = false
+    }
+  },
+  computed: {
+    binding () {
+      const binding = {}
+      if (!this.$vuetify.breakpoint.smAndUp) binding.column = true
+      return binding
     }
   }
 }

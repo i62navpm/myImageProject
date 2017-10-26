@@ -1,6 +1,6 @@
 <template lang="pug">
   v-layout(row justify-center align-center)
-    v-flex(xs12 sm8 md6)
+    v-flex(xs12 sm10 md6)
       login
 </template>
 

@@ -33,6 +33,13 @@ export default {
       }
       this.loading = false
     }
+  },
+  computed: {
+    binding () {
+      const binding = {}
+      if (!this.$vuetify.breakpoint.smAndUp) binding.column = true
+      return binding
+    }
   }
 }
 </script>
