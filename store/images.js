@@ -1,4 +1,3 @@
-import AWS from 'aws-sdk'
 import axios from 'axios'
 
 export const state = () => ({
@@ -23,7 +22,6 @@ export const actions = {
       baseURL: 'https://tv1voqex82.execute-api.eu-central-1.amazonaws.com/v1/images/',
       headers: { 'Authorization': token }
     })
-    this.s3 = new AWS.S3()
   },
 
   async GET_IMAGES({ commit }, { email }) {
@@ -36,13 +34,22 @@ export const actions = {
     return {url: this.awsService.defaults.baseURL + email, token: this.awsService.defaults.headers.Authorization}
   },
 
-  async UPLOAD_IMAGE({ dispatch }, { email, name, file }) {
-    const params = {
-      Bucket: 'my-image-project',
-      Key: `${email}/${name}`,
-      Body: file
-    }
-
-    await this.s3.putObject(params).promise()
+  UPLOAD_IMAGE({ dispatch }, { email, name, file }) {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    return new Promise((resolve, reject) => {
+      reader.onload = async () => {
+        const params = {
+          Bucket: 'my-image-project',
+          Key: name,
+          Body: reader.result
+        }
+        try {
+          resolve(await this.awsService.post(email, params))
+        } catch (err) {
+          reject(new Error(err))
+        }
+      }
+    })
   }
 }

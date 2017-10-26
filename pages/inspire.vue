@@ -3,7 +3,6 @@
     v-layout(row wrap)
       v-flex.md4.sm6.xs12(v-for="image in getImages" :key="image.url")
         image-card(:image="image")
-          
 </template>
 
 <script>
@@ -17,8 +16,10 @@ export default {
   },
   data () {
     return {
-      images: []
     }
+  },
+  async mounted() {
+    await this.$store.dispatch('images/GET_IMAGES', {email: this.$store.state.auth.authEmail})
   },
   computed: {
     ...mapGetters({

@@ -1,5 +1,5 @@
 <template lang="pug">
-v-layout(row justify-center v-if="url" )
+v-layout(row justify-center)
   v-dialog(v-model='dialog', persistent max-width='500px')
     v-btn(color='red darken-2', @click.stop="dialog = true" slot="activator", fab dark absolute bottom right)
       v-icon camera
@@ -26,11 +26,6 @@ export default {
       dialog: false
     }
   },
-  async mounted() {
-    const {url, token} = await this.$store.dispatch('images/GET_INSTANCE', {email: this.$store.state.auth.authEmail})
-    this.url = url
-    this.token = token
-  },
   methods: {
     closeDialog() {
       this.dialog = false
@@ -43,7 +38,7 @@ export default {
       })
       await this.$store.dispatch('images/GET_IMAGES', {email: this.$store.state.auth.authEmail})
       this.closeDialog()
-      event.target.files = null
+      event.target.value = null
     }
   }
 }

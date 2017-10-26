@@ -19,7 +19,7 @@
         v-btn(icon='' slot="activator")
           v-icon exit_to_app
         span Logout
-      v-fab-transition
+      div
         upload-dialog
     main
       v-content
