@@ -22,6 +22,12 @@ export default {
   components: {
     UploadDialog
   },
+  head: {
+    titleTemplate: '%s - Application',
+    meta: [
+      { hid: 'description', name: 'description', content: 'Application view' }
+    ]
+  },
   data () {
     return {
       title: 'My image project'

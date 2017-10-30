@@ -8,7 +8,12 @@
 
 <script>
 export default {
-
+  head: {
+    titleTemplate: '%s - Authentication',
+    meta: [
+      { hid: 'description', name: 'description', content: 'Auth views' }
+    ]
+  }
 }
 </script>
 <style>
