@@ -47,7 +47,6 @@ export const actions = {
 
   async LOGOUT ({ commit }, { username }) {
     try {
-      console.log(username)
       await this.cognito.logoutUser(username)
       commit('SET_USER', null)
     } catch (error) {
