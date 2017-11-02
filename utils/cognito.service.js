@@ -65,6 +65,11 @@ export default class CognitoSDK {
     })
   }
 
+  logoutUser(Email) {
+    this.cognitoUser = this.getCognitoUser(Email)
+    return this.cognitoUser.signOut()
+  }
+
   getUserData() {
     return new Promise((resolve, reject) => {
       this.cognitoUser.getUserAttributes((err, result) => {

@@ -45,6 +45,16 @@ export const actions = {
     }
   },
 
+  async LOGOUT ({ commit }, { username }) {
+    try {
+      console.log(username)
+      await this.cognito.logoutUser(username)
+      commit('SET_USER', null)
+    } catch (error) {
+      throw new Error(error)
+    }
+  },
+
   async VERIFICATE_CODE ({ state, commit }, { code }) {
     try {
       let result = await this.cognito.verificateCode({ Username: state.authEmail, code })
