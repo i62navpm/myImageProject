@@ -4,6 +4,6 @@ export default async ({ store }) => {
     const token = await store.dispatch('auth/GET_USER_SESSION')
     store.dispatch('images/INIT_API', { token })
   } catch (error) {
-    console.error(error)
+    return error
   }
 }
