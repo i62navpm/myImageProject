@@ -31,6 +31,9 @@ export default {
 
       try {
         await this.$store.dispatch('auth/LOGIN', ({ username: this.email.trim(), password: this.password.trim() }))
+        const token = await this.$store.dispatch('auth/GET_USER_SESSION')
+        this.$store.dispatch('images/INIT_API', { token })
+
         this.$router.push({ name: 'inspire' })
       } catch (error) {
         this.error = error.message
