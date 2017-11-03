@@ -13,6 +13,9 @@ export const getters = {
 export const mutations = {
   SET_IMAGES: function (state, images) {
     state.userImages = images
+  },
+  REMOVE_IMAGE: function (state, image) {
+    state.userImages = state.userImages.filter(item => item.name !== image)
   }
 }
 
@@ -51,5 +54,17 @@ export const actions = {
         }
       }
     })
+  },
+  async REMOVE_IMAGE({ commit }, { email, image }) {
+    const data = {
+      Bucket: 'my-image-project',
+      Key: `${email}/thumbnails/${image}`
+    }
+    try {
+      await this.awsService.delete(email, {data})
+      commit('REMOVE_IMAGE', image)
+    } catch (err) {
+      throw new Error(err)
+    }
   }
 }

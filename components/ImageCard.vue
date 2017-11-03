@@ -9,7 +9,7 @@
       v-spacer
       v-btn(icon)
         v-icon(color="teal darken-2") share
-      v-btn(icon)
+      v-btn(icon @click.stop="removeImage()")
         v-icon(color="deep-orange darken-2") delete
 </template>
 
@@ -23,6 +23,17 @@ export default {
   methods: {
     dateFormat(input) {
       return moment(input).format('L')
+    },
+    async removeImage() {
+      try {
+        const params = {
+          email: this.$store.state.auth.authEmail,
+          image: this.image.name
+        }
+        await this.$store.dispatch('images/REMOVE_IMAGE', params)
+      } catch (err) {
+        return err
+      }
     }
   }
 }
