@@ -2,6 +2,8 @@
 
 > Nuxt.js + Vuetify.js project
 
+<p align="center"><img align="center" src="https://github.com/i62navpm/myImageProject/blob/master/architecturePostImage.png"/></p>
+
 ## Build Setup
 
 ``` bash
