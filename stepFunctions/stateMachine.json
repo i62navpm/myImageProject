@@ -1,0 +1,48 @@
+{
+  "Comment": "My image project",
+  "StartAt": "Parallel",
+  "States": {
+    "Parallel": {
+      "Type": "Parallel",
+      "Next": "Final State",
+      "ResultPath": "$.parallelResults",
+      "Branches": [
+        {
+          "StartAt": "Thumbnail",
+          "States": {
+            "Thumbnail": {
+              "Type": "Task",
+              "Resource": "arn:aws:lambda:*",
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "Wait 5s",
+          "States": {
+            "Wait 5s": {
+              "Type": "Wait",
+              "Seconds": 5,
+              "Next": "Rekognition"
+            },
+            "Rekognition": {
+              "Type": "Task",
+              "ResultPath": "$.rekognitionResult",
+              "Next": "FaceFunny",
+              "Resource": "arn:aws:lambda:*"
+            },
+            "FaceFunny": {
+              "Type": "Task",
+              "Resource": "arn:aws:lambda:*",
+              "End": true
+            }
+          }
+        }
+      ]
+    },
+    "Final State": {
+      "Type": "Pass",
+      "End": true
+    }
+  }
+}
